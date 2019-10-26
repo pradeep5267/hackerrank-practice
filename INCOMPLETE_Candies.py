@@ -20,27 +20,38 @@ def Candies3(arr):
     '''
     n = len(arr)
     candie_list = [1]*n
-    # candie_list[0] = 1
+    # candie_list.append(0)
 
     # look back
-    for i in range(1, n-1):
+    for i in range(1, n):
+        # if (candie_list[i] == 0):
+        #     candie_list[i] = 1
         if (arr[i] > arr[i-1]):
             # standing at i, check whether the i-1 is smaller;
             # if true give i one more candie than i-1
-            candie_list[i] = max(candie_list[i] ,candie_list[i-1] + 1)
+            candie_list[i] = candie_list[i-1] + 1
     
     # look forward
-    for i in range(n-2, 0, -1):
+    for i in range(n-2, -1, -1):
+        print(i, i+1, candie_list[i], candie_list[i+1])
         if (arr[i] > arr[i + 1]):
+            # here compare the candies and give the highest candies between
+            # the 2 to i;
+            # another way is to check if the candies of i is 
+            # less than OR EQUAL to i+1, this <= is necessary since 
+            # both i and i+1 would be having 1 candie by default and 
+            # during backward pass i might have been less than i-1
+            # but during forward pass i will be greater than i+1
+            ### basically an edge case
             candie_list[i] = max(candie_list[i] ,candie_list[i+1] + 1)
-
+            # candie_list[i] = candie_list[i + 1] + 1
     print(candie_list, sum(candie_list))
 
 arr1 = [1, 2, 2] #4
 arr2 = [2, 4, 2, 6, 1, 7, 8, 9, 2, 1] #19
 arr3 = [2, 4, 3, 5, 2, 6, 4, 5] #12
-result = Candies3(arr1)
-#%%
+result = Candies3(arr3)
+%%
 def Candies1(arr):
     '''
     MVC
@@ -79,7 +90,7 @@ def Candies1(arr):
 arr1 = [1, 2, 2] #4
 arr2 = [2, 4, 2, 6, 1, 7, 8, 9, 2, 1] #19
 arr3 = [2, 4, 3, 5, 2, 6, 4, 5] #12
-result = Candies1(arr2)
+result = Candies1(arr3)
 #%%
 def Candies2(arr):
     '''
@@ -112,6 +123,6 @@ def Candies2(arr):
 arr1 = [1, 2, 2] #4
 arr2 = [2, 4, 2, 6, 1, 7, 8, 9, 2, 1] #19
 arr3 = [2, 4, 3, 5, 2, 6, 4, 5] #12
-result = Candies(arr2)
+arr4 = [2,4,3,5,2,6,4,5]
 
-#%%
+result = Candies(arr3)
