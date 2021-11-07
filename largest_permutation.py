@@ -15,16 +15,6 @@ def largest_permutation(k, arr):
         z += 1
         k -= 1
     print(arr)
-        
-
-
-
-
-
-
-
-
-
 
 k = 1
 arr1 = '2 1 3'
